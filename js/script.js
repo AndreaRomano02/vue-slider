@@ -41,18 +41,24 @@ const app = Vue.createApp({
   },
 
   //# Funzioni collegate ai dati
-  computed: {},
+  computed: {
+    lastPicture() {
+      return this.pictures.length - 1;
+    },
+  },
 
   //# Funzioni
   methods: {
     //* Passa all'indice successivo
     goToNext() {
-      this.currentIndex++;
+      if (this.currentIndex === this.lastPicture) this.currentIndex = 0;
+      else this.currentIndex++;
     },
 
     //* Passa all'indice precedente
     goToPrev() {
-      this.currentIndex--;
+      if (this.currentIndex) this.currentIndex--;
+      else this.currentIndex = this.lastPicture;
     },
   },
 });
