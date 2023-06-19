@@ -1,51 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Andrea Romano" />
+    <meta name="description" content="..." />
+    <!-- Fontawesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Bootstrap link -->
+    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
+    <!-- My Style  -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- VUE -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- JavaScript link -->
+    <script defer src="js/script.js"></script>
+    <title>Carousel</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Andrea Romano">
-  <meta name="description" content="...">
-  <!-- Fontawesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Bootstrap link -->
-  <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
-  <!-- My Style  -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- VUE -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <!-- JavaScript link -->
-  <script defer src="js/script.js"></script>
-  <title>Carousel</title>
-</head>
+  <body>
+    <div id="root" class="container">
+      <div class="row align-items-center">
+        <div id="carousel" class="col-8">
+          <!--* Next Button -->
+          <i
+            id="btn-prev"
+            class="fa-solid fa-circle-arrow-up"
+            @click="goToNext"
+            @mouseenter="stopAutoplay"
+            @mouseleave="startAutoplay"
+          ></i>
 
-<body>
-  <div id="root" class="container">
-    <div class="row align-items-center">
+          <!--* Gallery of Images -->
+          <div id="gallery">
+            <figure v-for="(picture, i) in pictures" v-show="currentIndex === i">
+              <img :src="picture.image" :alt="picture.title" />
+              <figcaption>
+                <h1>{{ picture.title }}</h1>
+                <p>{{ picture.text }}</p>
+              </figcaption>
+            </figure>
+          </div>
 
-      <div id="carousel" class="col-8">
-        <i id="btn-prev" class="fa-solid fa-circle-arrow-up" @click="goToNext"></i>
-        <div id="gallery">
-          <figure v-for="(picture, i) in pictures" v-show="currentIndex === i">
-            <img :src="picture.image" :alt="picture.title">
-            <figcaption>
-              <h1>{{ picture.title }}</h1>
-              <p>{{ picture.text }}</p>
-            </figcaption>
-          </figure>
+          <!--* Prev Button -->
+          <i
+            id="btn-next"
+            class="fa-solid fa-circle-arrow-down"
+            @click="goToPrev"
+            @mouseenter="stopAutoplay"
+            @mouseleave="startAutoplay"
+          ></i>
         </div>
-        <i id="btn-next" class="fa-solid fa-circle-arrow-down" @click="goToPrev"></i>
-      </div>
-      <div id="thumbnails" class="col-4">
-        <img v-for="(picture, i) in pictures" :src="picture.image" :alt="picture.title"
-          :class="{layer : currentIndex == i}" @click="currentIndex = i">
+
+        <!--* Thumbnails -->
+        <div id="thumbnails" class="col-4">
+          <img
+            v-for="(picture, i) in pictures"
+            :src="picture.image"
+            :alt="picture.title"
+            :class="{layer : currentIndex == i}"
+            @click="currentIndex = i"
+            @mouseenter="stopAutoplay"
+            @mouseleave="startAutoplay"
+          />
+        </div>
       </div>
     </div>
-  </div>
-
-</body>
-
+  </body>
 </html>

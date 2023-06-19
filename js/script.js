@@ -43,6 +43,7 @@ const app = Vue.createApp({
 
   //# Funzioni collegate ai dati
   computed: {
+    //* Determina il numero dell'ultima immagine
     lastPicture() {
       return this.pictures.length - 1;
     },
@@ -61,9 +62,13 @@ const app = Vue.createApp({
       if (this.currentIndex) this.currentIndex--;
       else this.currentIndex = this.lastPicture;
     },
+
+    //* Inizia automaticamente a scorrere le immagini
     startAutoplay() {
-      setInterval(this.goToNext, 3000);
+      this.autoplay = setInterval(this.goToNext, 3000);
     },
+
+    //* Ferma lo scorrimento delle immagini
     stopAutoplay() {
       clearInterval(this.autoplay);
     },
