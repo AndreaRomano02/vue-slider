@@ -41,7 +41,7 @@
       </div>
       <div id="thumbnails" class="col-4">
         <img v-for="(picture, i) in pictures" :src="picture.image" :alt="picture.title"
-          :class="{layer : currentIndex == i}">
+          :class="{layer : currentIndex == i}" @click="currentIndex = i">
       </div>
     </div>
   </div>
