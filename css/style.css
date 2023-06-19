@@ -1,0 +1,67 @@
+#carousel {
+  height: 600px;
+  margin: 20vh 0;
+  position: relative;
+  padding: 0;
+}
+
+#gallery {
+  height: 100%;
+}
+
+#gallery img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 30px;
+  display: none;
+}
+
+#gallery img.active {
+  display: block;
+  user-select: none;
+}
+
+#carousel .fa-solid {
+  position: absolute;
+  font-size: 3rem;
+  left: 50%;
+  translate: -50%;
+  cursor: pointer;
+ opacity: 0.2;
+}
+
+#carousel .fa-solid:hover{
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+#carousel .fa-solid:active{
+  transform: scale(1.2);
+}
+
+#btn-prev {
+  top: -4rem;
+}
+
+#btn-next {
+  bottom: -4rem;
+}
+
+#thumbnails {
+  width: 20vw;
+  height: 600px;
+  padding: 0;
+  position: relative;
+}
+
+#thumbnails img {
+  height: 120px;
+  width: 100%;
+  object-fit: center;
+}
+
+#thumbnails .layer{
+opacity: 0.4;
+border: 10px solid black;
+}
