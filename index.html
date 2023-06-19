@@ -27,9 +27,9 @@
     <div class="row align-items-center">
 
       <div id="carousel" class="col-8">
-        <i id="btn-prev" class="fa-solid fa-circle-arrow-up"></i>
+        <i id="btn-prev" class="fa-solid fa-circle-arrow-up" @click="goToNext"></i>
         <div id="gallery">
-          <figure v-for="picture in pictures">
+          <figure v-for="(picture, i) in pictures" v-show="currentIndex === i">
             <img :src="picture.image" :alt="picture.title">
             <figcaption>
               <h1>{{ picture.title }}</h1>
@@ -37,7 +37,7 @@
             </figcaption>
           </figure>
         </div>
-        <i id="btn-next" class="fa-solid fa-circle-arrow-down"></i>
+        <i id="btn-next" class="fa-solid fa-circle-arrow-down" @click="goToPrev"></i>
       </div>
       <div id="thumbnails" class="col-4">
         <img v-for="picture in pictures" :src="picture.image" :alt="picture.title" class="layer">

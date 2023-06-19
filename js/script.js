@@ -44,60 +44,70 @@ const app = Vue.createApp({
   computed: {},
 
   //# Funzioni
-  methods: {},
+  methods: {
+    //* Passa all'indice successivo
+    goToNext() {
+      this.currentIndex++;
+    },
+
+    //* Passa all'indice precedente
+    goToPrev() {
+      this.currentIndex--;
+    },
+  },
 });
 
 app.mount('#root');
 
-//# Variabili
-let imgElement;
+// //# Variabili
+// let imgElement;
 
-// //# Creo il ciclo per inserire le immagini
-for (let i = 0; i < images.length; i++) {
-  imgElement = document.createElement('img');
-  imgElement.src = images[i];
-  imgElement.alt = 'Landscape ' + (i + 1);
-  galleryElement.appendChild(imgElement);
+// // //# Creo il ciclo per inserire le immagini
+// for (let i = 0; i < images.length; i++) {
+//   imgElement = document.createElement('img');
+//   imgElement.src = images[i];
+//   imgElement.alt = 'Landscape ' + (i + 1);
+//   galleryElement.appendChild(imgElement);
 
-  const thumbnails = imgElement.cloneNode();
-  thumbnailGallery.appendChild(thumbnails);
-}
+//   const thumbnails = imgElement.cloneNode();
+//   thumbnailGallery.appendChild(thumbnails);
+// }
 
-//# LOGICA
-const mainImages = document.querySelectorAll('#carousel img');
-const imagesAside = document.querySelectorAll('#thumbnails img');
-let currentIndex = 0;
+// //# LOGICA
+// const mainImages = document.querySelectorAll('#carousel img');
+// const imagesAside = document.querySelectorAll('#thumbnails img');
+// let currentIndex = 0;
 
-//* Inserisco nella prima immagina la classe active e layer
-mainImages[currentIndex].classList.add('active');
-imagesAside[currentIndex].classList.add('layer');
+// //* Inserisco nella prima immagina la classe active e layer
+// mainImages[currentIndex].classList.add('active');
+// imagesAside[currentIndex].classList.add('layer');
 
-//# Tenere in ascolto i bottoni
-//! PREV
-btnPrev.addEventListener('click', function () {
-  mainImages[currentIndex].classList.remove('active');
-  imagesAside[currentIndex].classList.remove('layer');
-  if (currentIndex === 0) {
-    currentIndex = mainImages.length - 1;
-  } else {
-    currentIndex--;
-  }
-  mainImages[currentIndex].classList.add('active');
-  imagesAside[currentIndex].classList.add('layer');
-  console.log(currentIndex);
-});
+// //# Tenere in ascolto i bottoni
+// //! PREV
+// btnPrev.addEventListener('click', function () {
+//   mainImages[currentIndex].classList.remove('active');
+//   imagesAside[currentIndex].classList.remove('layer');
+//   if (currentIndex === 0) {
+//     currentIndex = mainImages.length - 1;
+//   } else {
+//     currentIndex--;
+//   }
+//   mainImages[currentIndex].classList.add('active');
+//   imagesAside[currentIndex].classList.add('layer');
+//   console.log(currentIndex);
+// });
 
-//! NEXT
-btnNext.addEventListener('click', function () {
-  mainImages[currentIndex].classList.remove('active');
-  imagesAside[currentIndex].classList.remove('layer');
-  if (currentIndex === mainImages.length - 1) {
-    currentIndex = 0;
-  } else {
-    currentIndex++;
-  }
-  mainImages[currentIndex].classList.add('active');
-  imagesAside[currentIndex].classList.add('layer');
+// //! NEXT
+// btnNext.addEventListener('click', function () {
+//   mainImages[currentIndex].classList.remove('active');
+//   imagesAside[currentIndex].classList.remove('layer');
+//   if (currentIndex === mainImages.length - 1) {
+//     currentIndex = 0;
+//   } else {
+//     currentIndex++;
+//   }
+//   mainImages[currentIndex].classList.add('active');
+//   imagesAside[currentIndex].classList.add('layer');
 
-  console.log(currentIndex);
-});
+//   console.log(currentIndex);
+// });
