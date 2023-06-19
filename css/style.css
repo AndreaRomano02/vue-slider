@@ -8,18 +8,28 @@
 #gallery {
   height: 100%;
 }
+#gallery figure {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
 
 #gallery img {
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 30px;
-  display: none;
+  user-select: none;
 }
 
-#gallery img.active {
-  display: block;
-  user-select: none;
+#gallery figcaption{
+  position: absolute;
+  bottom: 20px;
+  color: white;
+  margin: 0 30px;
+  text-align: center;
+  text-shadow: 0 0 20px #fff;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 #carousel .fa-solid {

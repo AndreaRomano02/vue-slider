@@ -29,12 +29,18 @@
       <div id="carousel" class="col-8">
         <i id="btn-prev" class="fa-solid fa-circle-arrow-up"></i>
         <div id="gallery">
-          <img src="img/01.webp" alt="Landscape 1" class="active">
+          <figure v-for="picture in pictures">
+            <img :src="picture.image" :alt="picture.title">
+            <figcaption>
+              <h1>{{ picture.title }}</h1>
+              <p>{{ picture.text }}</p>
+            </figcaption>
+          </figure>
         </div>
         <i id="btn-next" class="fa-solid fa-circle-arrow-down"></i>
       </div>
       <div id="thumbnails" class="col-4">
-        <img src="img/01.webp" alt="Landscape 1" class="layer">
+        <img v-for="picture in pictures" :src="picture.image" :alt="picture.title" class="layer">
       </div>
     </div>
   </div>
